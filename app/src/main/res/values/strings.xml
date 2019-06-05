@@ -1,6 +1,10 @@
 <resources>
-        <string name="app_name">Gas level App</string>
+        <string name="app_name">GMLS</string>
 
         <!-- TODO: Remove or change this placeholder text -->
         <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="critical">You have to order another gas immediately</string>
+        <string name="half">You have half cylinder of gas remaining</string>
+        <string name="three_quarter">Three quarter cylinder of gas</string>
+        <string name="full">Full cylinder of gas</string>
 </resources>
