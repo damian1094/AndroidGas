@@ -7,9 +7,9 @@ public class GasObject {
     @SerializedName("id")
     private int id;
     @SerializedName("weight")
-    private String weight;
+    private float weight;
 
-    public GasObject(int id, String weight) {
+    public GasObject(int id, float weight) {
         this.id = id;
         this.weight = weight;
     }
@@ -22,11 +22,11 @@ public class GasObject {
         this.id = id;
     }
 
-    public String getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 }
