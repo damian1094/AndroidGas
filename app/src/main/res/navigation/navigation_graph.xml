@@ -8,7 +8,7 @@
 
         <fragment
                 android:id="@+id/homeFragment"
-                android:name="com.hfad.gaslevelapp.HomeFragment"
+                android:name="com.hfad.gaslevelapp.UI.HomeFragment"
                 android:label="fragment_home"
                 tools:layout="@layout/fragment_home" >
                 <action
@@ -19,7 +19,7 @@
         </fragment>
         <fragment
                 android:id="@+id/productFragment"
-                android:name="com.hfad.gaslevelapp.ProductFragment"
+                android:name="com.hfad.gaslevelapp.UI.ProductFragment"
                 android:label="fragment_product"
                 tools:layout="@layout/fragment_product" />
 </navigation>

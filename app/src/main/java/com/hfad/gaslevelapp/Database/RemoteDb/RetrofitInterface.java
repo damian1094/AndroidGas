@@ -1,4 +1,4 @@
-package com.hfad.gaslevelapp;
+package com.hfad.gaslevelapp.Database.RemoteDb;
 
 import java.util.List;
 
@@ -11,6 +11,9 @@ import retrofit2.http.POST;
 public interface RetrofitInterface {
     @GET("display.php")
     Call<List<GasObject>> getWeight();
+
+    @GET("product.php")
+    Call<List<Product>> getProduct();
 
     @FormUrlEncoded
     @POST("new_user.php")

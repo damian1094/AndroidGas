@@ -7,4 +7,9 @@
         <string name="half">You have half cylinder of gas remaining</string>
         <string name="three_quarter">Three quarter cylinder of gas</string>
         <string name="full">Full cylinder of gas</string>
+        <string name="share">Share app</string>
+        <string name="order">Order gas products</string>
+        <string name="order_product">Gas products</string>
+        <string name="cart">Add to cart</string>
+        <string name="cart_counter">0</string>
 </resources>
