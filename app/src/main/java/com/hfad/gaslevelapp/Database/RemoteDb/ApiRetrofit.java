@@ -1,11 +1,11 @@
-package com.hfad.gaslevelapp;
+package com.hfad.gaslevelapp.Database.RemoteDb;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiRetrofit {
 
-    private static final String BASE_URL = "http://192.168.43.75/bob/";
+    private static final String BASE_URL = "http://192.168.43.215/sanga/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getApi(){

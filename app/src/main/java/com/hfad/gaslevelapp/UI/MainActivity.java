@@ -1,7 +1,9 @@
-package com.hfad.gaslevelapp;
+package com.hfad.gaslevelapp.UI;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.hfad.gaslevelapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

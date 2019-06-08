@@ -1,4 +1,4 @@
-package com.hfad.gaslevelapp;
+package com.hfad.gaslevelapp.Database.RemoteDb;
 
 import com.google.gson.annotations.SerializedName;
 

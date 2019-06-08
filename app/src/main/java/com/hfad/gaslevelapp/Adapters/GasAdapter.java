@@ -1,6 +1,5 @@
-package com.hfad.gaslevelapp;
+package com.hfad.gaslevelapp.Adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.hfad.gaslevelapp.Database.RemoteDb.GasObject;
+import com.hfad.gaslevelapp.R;
 
 import java.util.List;
 
@@ -30,13 +31,12 @@ public class GasAdapter extends RecyclerView.Adapter<GasAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.object = gasObjectList.get(position);
 
         if ((viewHolder.object.getWeight() >= 0) && (viewHolder.object.getWeight() <= 2)){
-            viewHolder.imageViewWarn.setBackgroundColor(R.color.red);
+            viewHolder.imageViewWarn.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(R.drawable.quarter)
                     .into(viewHolder.imageView);
@@ -44,7 +44,7 @@ public class GasAdapter extends RecyclerView.Adapter<GasAdapter.ViewHolder> {
         }
 
         if ((viewHolder.object.getWeight() >= 3) && (viewHolder.object.getWeight() <= 4)){
-            viewHolder.imageViewWarn.setBackgroundColor(R.color.orange);
+            viewHolder.imageViewWarn.setVisibility(View.GONE);
             Glide.with(context)
                     .load(R.drawable.we)
                     .into(viewHolder.imageView);
@@ -52,7 +52,7 @@ public class GasAdapter extends RecyclerView.Adapter<GasAdapter.ViewHolder> {
         }
 
         if ((viewHolder.object.getWeight() >= 5) && (viewHolder.object.getWeight() <= 6)){
-            viewHolder.imageViewWarn.setBackgroundColor(R.color.green);
+            viewHolder.imageViewWarn.setVisibility(View.GONE);
             Glide.with(context)
                     .load(R.drawable.threequarter)
                     .into(viewHolder.imageView);
@@ -60,7 +60,7 @@ public class GasAdapter extends RecyclerView.Adapter<GasAdapter.ViewHolder> {
         }
 
         if ((viewHolder.object.getWeight() >= 7) && (viewHolder.object.getWeight() <= 10)){
-            viewHolder.imageViewWarn.setBackgroundColor(R.color.green);
+            viewHolder.imageViewWarn.setVisibility(View.GONE);
             Glide.with(context)
                     .load(R.drawable.wawe)
                     .into(viewHolder.imageView);
@@ -70,12 +70,13 @@ public class GasAdapter extends RecyclerView.Adapter<GasAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return gasObjectList.size();
+      //  return gasObjectList.size();
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imageView;
-        private TextView textView, imageViewWarn;
+        private ImageView imageView, imageViewWarn;
+        private TextView textView;
         private GasObject object;
 
         public ViewHolder(@NonNull View itemView) {

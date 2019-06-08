@@ -8,8 +8,10 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TextView
-                        android:background="@color/green"
+                <ImageView
+                        android:contentDescription="@string/app_name"
+                        android:background="@drawable/red"
+                        android:visibility="gone"
                         android:id="@+id/danger_warning"
                         android:layout_width="match_parent"
                         android:layout_height="50dp" />
