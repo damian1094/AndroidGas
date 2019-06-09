@@ -18,7 +18,7 @@ public interface CartDao {
     @Query("SELECT * FROM Cart")
     LiveData<List<CartProducts>> getAllCart();
 
-    @Query("SELECT EXISTS(SELECT 1 FROM Cart WHERE id =:id)")
-    boolean getId(int id);
+    @Query("SELECT EXISTS(SELECT 1 FROM Cart WHERE name =:id)")
+    boolean getId(String id);
 
 }

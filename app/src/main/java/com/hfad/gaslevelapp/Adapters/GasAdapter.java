@@ -70,8 +70,7 @@ public class GasAdapter extends RecyclerView.Adapter<GasAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-      //  return gasObjectList.size();
-        return 0;
+        return gasObjectList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

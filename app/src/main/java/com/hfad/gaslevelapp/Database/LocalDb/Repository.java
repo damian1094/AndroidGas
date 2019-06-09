@@ -24,7 +24,7 @@ public class Repository {
         new Repository.DeleteAllCartAsyncTask(cartDao).execute();
     }
 
-    public boolean getId(int path){
+    public boolean getId(String path){
         return cartDao.getId(path);
     }
 

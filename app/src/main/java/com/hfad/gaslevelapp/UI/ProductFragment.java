@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hfad.gaslevelapp.Adapters.ProductAdapter;
@@ -45,8 +45,8 @@ public class ProductFragment extends Fragment implements ProductAdapter.CartList
     private List<Product>productList;
     private RetrofitInterface apiRetrofit;
     private GridLayoutManager gridLayoutManager;
-    private Toolbar toolbar;
     private ImageView cart;
+    private TextView cartCounter;
     private CartViewModel cartViewModel;
     private Repository repository;
 
@@ -105,10 +105,11 @@ public class ProductFragment extends Fragment implements ProductAdapter.CartList
         apiRetrofit = ApiRetrofit.getApi().create(RetrofitInterface.class);
         gridLayoutManager = new GridLayoutManager(getContext(), 2);
         cart = view.findViewById(R.id.cart_store);
-        toolbar = view.findViewById(R.id.toolbar_fragment);
+        //Toolbar toolbar = view.findViewById(R.id.toolbar_fragment);
         cartViewModel = ViewModelProviders.of(this).get(CartViewModel.class);
         repository = new Repository(getContext());
-
+        adapter = new ProductAdapter(getContext(), this);
+        cartCounter = view.findViewById(R.id.cart_add);
     }
 
     private void refresh(){
@@ -131,8 +132,8 @@ public class ProductFragment extends Fragment implements ProductAdapter.CartList
                 progressBar.setVisibility(View.INVISIBLE);
                 layout.setRefreshing(false);
                 productList = response.body();
-                adapter = new ProductAdapter(getContext(), productList);
                 recyclerView.setLayoutManager(gridLayoutManager);
+                adapter.setProductList(productList);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -155,10 +156,23 @@ public class ProductFragment extends Fragment implements ProductAdapter.CartList
     }
 
     @Override
-    public void passDataToCart(int id, String productName, String weight, String price) {
-        CartProducts products = new CartProducts(id, productName, weight, price);
-        if (repository.getId(id ))
-        cartViewModel.insert(products);
-        else Toast.makeText(getContext(), "Already added", Toast.LENGTH_LONG).show();
+    public void passDataToCart(String productName, String weight, String price) {
+        CartProducts products = new CartProducts(productName, weight, price);
+        if (!repository.getId(productName)) {
+            cartViewModel.insert(products);
+            Toast.makeText(getContext(), "Successful added", Toast.LENGTH_LONG).show();
+            int counter = 0;
+            updateCart(counter);
+        }
+        else {
+            Toast.makeText(getContext(), "Already added", Toast.LENGTH_LONG).show();
+            cartViewModel.deleteAll();
+            cartCounter.setText(String.valueOf(0));
+        }
+    }
+
+    private void updateCart(int counter) {
+        int no = counter + 1;
+        cartCounter.setText(String.valueOf(no));
     }
 }

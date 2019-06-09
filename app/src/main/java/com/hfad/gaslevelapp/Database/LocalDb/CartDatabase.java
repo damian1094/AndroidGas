@@ -8,7 +8,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 
-@Database(entities = {CartProducts.class}, version = 1, exportSchema = false)
+@Database(entities = {CartProducts.class}, version = 2, exportSchema = false)
 public abstract class CartDatabase extends RoomDatabase {
 
     private static CartDatabase instance;

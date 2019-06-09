@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
-    @GET("display.php")
+    @GET("gas.php")
     Call<List<GasObject>> getWeight();
 
     @GET("product.php")

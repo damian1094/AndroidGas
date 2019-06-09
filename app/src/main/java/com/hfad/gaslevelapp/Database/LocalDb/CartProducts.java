@@ -3,11 +3,10 @@ package com.hfad.gaslevelapp.Database.LocalDb;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
 @Entity(tableName = "cart")
 public class CartProducts {
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
     @ColumnInfo(name = "name")
@@ -17,8 +16,7 @@ public class CartProducts {
     @ColumnInfo(name = "price")
     private String price;
 
-    public CartProducts(int id, String name, String weight, String price) {
-        this.id = id;
+    public CartProducts(String name, String weight, String price) {
         this.name = name;
         this.weight = weight;
         this.price = price;

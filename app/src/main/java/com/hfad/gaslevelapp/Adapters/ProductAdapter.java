@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,19 +22,17 @@ import com.bumptech.glide.request.target.Target;
 import com.hfad.gaslevelapp.Database.RemoteDb.Product;
 import com.hfad.gaslevelapp.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private Context context;
-    private List<Product>productList;
     private CartListener listener;
+    private List<Product>productList = new ArrayList<>();
+    private static final String TAG = "TAG";
 
-    public ProductAdapter(Context context, List<Product> productList) {
+    public ProductAdapter(Context context, CartListener listener) {
         this.context = context;
-        this.productList = productList;
-    }
-
-    public ProductAdapter(CartListener listener) {
         this.listener = listener;
     }
 
@@ -79,6 +78,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return productList.size();
     }
 
+    public void setProductList (List<Product>productList) {
+        this.productList = productList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView textViewName, textViewWeight, textViewPrice;
         private ImageView productImage;
@@ -97,7 +101,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             buttonCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.passDataToCart(product.getId(),  product.getName(),product.getWeight(),
+                    listener.passDataToCart(product.getName(),product.getWeight(),
                             product.getPrice());
                 }
             });
@@ -105,7 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public interface CartListener{
-        void passDataToCart(int id, String productName, String weight, String price);
+        void passDataToCart(String productName, String weight, String price);
     }
 
 }
